@@ -1,0 +1,44 @@
+library(forecast)
+library(plotly)
+library(seasonal)
+library(zoo)
+library(tseries)
+library(fpp2)
+adidas<-read.csv(file.choose())
+adidas<-adidas[,c(3)]
+adidas.ts<-ts(adidas, start = c(2011, 1), end = c(2017,1),frequency = 12)
+###Data partioning
+nValid <- 17
+nTrain <- 84-nValid
+adidas.train.ts<-window(adidas.ts, end = c(2017, 2+nTrain))
+adidas.test.ts<-window(adidas.ts, start = c(2011, 2+nTrain+1))
+autoplot(adidas.test.ts)
+adidas.train.lm.ts<-window(adidas.ts, start= c(2017, 2+nTrain))
+adidas.test.lm.ts<-window(adidas.ts, end = c(2011, 2+nTrain+1))
+autoplot(adidas.test.lm.ts)
+autoplot(adidas.train.lm.ts)
+###building model
+##Arima model
+arima.adidas<-auto.arima(adidas.train.ts)
+arima.adidas
+forecast.arima.adidas<-forecast(arima.adidas, h = nValid)
+autoplot(forecast.arima.adidas)
+checkresiduals(forecast.arima.adidas)
+pre.arima.adidas<-accuracy(forecast.arima.adidas, adidas.test.ts)
+pre.arima.adidas
+
+##Holt winter
+options(repr.plot.width = 6, repr.plot.height = 3)
+ggplot(adidas,aes(x=month,y=sales))+geom_line()+geom_smooth(method='lm')
+adidasdecom <- decompose(adidas.ts)
+plot(adidasdecom)
+saleslog <- log(adidas.ts)
+salesloghw <- HoltWinters(saleslog)
+salesloghw
+nextyearsales <- forecast(salesloghw, h=12)
+par(mar = rep(4,4))
+plot(nextyearsales)
+nextyearsales
+
+plot(residuals(nextyearsales))
+accuracy(nextyearsales)
