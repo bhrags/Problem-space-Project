@@ -1,0 +1,2 @@
+Our data consists of following rows:
+Customer_ID	Dept	Price	store	Date	num_units	Holiday	Store_ID	Store_Name	City	Region_Name	latitude_dgr	longitude_dgr	State	Country	Product_ID	Product_Name	Class_ID	Class_Name	Dept_ID	Dept_Name
