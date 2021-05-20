@@ -1,0 +1,23 @@
+Class 	Product	Model used	Product Accuracy(%)	Class Accuracy(%)	Mape(%)
+	Allyson	Arima	94.53%		5.47
+	Adidas	holt-winter	94.25%		5.75
+	body fit	holt-winter	95.92%		4.08
+	body max	Arima	94.65%		5.35
+	coller	Arima	96.10%		3.9
+	Gowin	Arima	97.72%		2.28
+	HeadCap	Arima	95.74%		4.26
+	headLight	Arima	96.07%		3.96
+	Nike	holt-winter	94.55%		5.45
+	Picnic pocket	holt-winter	94.83%		5.17
+	Power max	Arima	96.82%		3.18
+	Sleeping bag	Arima	96.56%		3.44
+	SwimmingGoggles	Arima	98.04%		1.96
+	Swimmingsuit	Arima	97.53%		2.47
+	SYN6	Arima	95.55%		4.45
+	waterPolo	Arima	96.64%		3.36
+	Camping hiking	Arima	96.67%		3.33
+	Exercise	Arima	98.93%		1.07
+	Football	Holt winter	97.43%		2.57
+	Swimming	Arima	94.81%		5.19
+	Total	Arima			4.84
+	Regression with total				5.78
